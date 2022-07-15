@@ -98,13 +98,13 @@
 	
 	    <repository>
 	      <id>nexus</id>
-	      <name>Mithun Technologies Releases Nexus Repository</name>
+	      <name>walmart Releases Nexus Repository</name>
 	      <url>http://3.109.211.150:9980/ravi/repository/walmart-release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
-	      <name>Mithun Technologies Snapshot Nexus Repository </name>
+	      <name>walmart Snapshot Nexus Repository </name>
 	      <url>http://3.109.211.150:9980/ravi/repository/walmart-snapshot/</url>
 	    </snapshotRepository>
 	    
