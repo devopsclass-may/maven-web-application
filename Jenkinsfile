@@ -15,7 +15,7 @@ node
     stage('build') {
         sh "${mavenhome}/bin/mvn clean package"
     }
-    
+     /*
     stage('execute sq report') {
      sh "${mavenhome}/bin/mvn clean sonar:sonar"
      
@@ -32,5 +32,5 @@ node
     }
     
 }
-
+*/
 }
