@@ -8,7 +8,7 @@ node
    echo "The nodelabel  is:${env.NODE_LABELS}"	
    echo "The build no is:${env.BUILD_NUMBER}"
     properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * *')])])
-    
+      try{
     stage('checkout code') {git branch: 'development', credentialsId: '7ae5e49b-2ab0-420d-8046-6d70b88af3c6', url: 'https://github.com/devopsclass-may/maven-web-application.git'
 }
     
@@ -31,6 +31,44 @@ node
         sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.233.173.43:/opt/apache-tomcat-9.0.64/webapps/"
     }
     
-}
+    }
+    }
+    
+    catch(e){
+    currentBuild.result = "FAILURE"
+     
+     
+     throw e
+    }
+    finally{
+    slacknotifications(currentBuild.result)
+    }
+} node closing
+
+def slacknotifications(String buildStatus = 'STARTED') {
+  
+  buildStatus =  buildStatus ?: 'SUCCESSFUL'
+
+  // Default values
+  def colorName = 'RED'
+  def colorCode = '#FF0000'
+  def subject = "${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
+  def summary = "${subject} (${env.BUILD_URL})"
+
+  // Override default values based on build status
+  if (buildStatus == 'STARTED') {
+    color = 'YELLOW'
+    colorCode = '#FFFF00'
+  } else if (buildStatus == 'SUCCESSFUL') {
+    color = 'GREEN'
+    colorCode = '#00FF00'
+  } else {
+    color = 'RED'
+    colorCode = '#FF0000'
+  }
+
+  // Send notifications
+  slackSend (color: colorCode, message: summary)
+
 
 }
