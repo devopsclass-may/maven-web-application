@@ -10,6 +10,10 @@ pipeline{
     //cron('* * * * *')
 }
 
+options {
+  buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')
+}
+
     
     stages{
     // get the code from github
