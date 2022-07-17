@@ -1,4 +1,4 @@
-node
+node('nodes')
 {
     def mavenhome = tool name : "maven3.8.6"
     
@@ -32,22 +32,22 @@ node
     }
     
     }
-    }
     */
+    }
+    
     catch(e){
     currentBuild.result = "FAILURE"
-     
      
      throw e
     }
     finally{
     slacknotifications(currentBuild.result)
     }
-} node closing
+} //node closing
 
 def slacknotifications(String buildStatus = 'STARTED') {
   
-  buildStatus =  buildStatus ?: 'SUCCESSFUL'
+  buildStatus =  buildStatus ?: 'SUCCESS'
 
   // Default values
   def colorName = 'RED'
