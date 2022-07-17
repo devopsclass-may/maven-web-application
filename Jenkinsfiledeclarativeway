@@ -5,6 +5,12 @@ pipeline{
     maven "maven3.8.6"
     }
     
+    triggers {
+  pollSCM('* * * * *')
+    //cron('* * * * *')
+}
+
+    
     stages{
     // get the code from github
      stage('checkout code'){
