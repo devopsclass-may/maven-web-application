@@ -9,7 +9,7 @@ node
    echo "The build no is:${env.BUILD_NUMBER}"
     properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * *')])])
       try{
-      slacknotification('STARTED')
+      slacknotifications('STARTED')
     stage('checkout code') {git branch: 'development', credentialsId: '7ae5e49b-2ab0-420d-8046-6d70b88af3c6', url: 'https://github.com/devopsclass-may/maven-web-application.git'
 }
     
