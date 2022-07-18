@@ -37,6 +37,7 @@ options {
         sh "mvn clean package"
     }
 }
+*/
 // execute sq report
 stage('sq report'){
 steps{
@@ -58,7 +59,7 @@ stage('deployapptomcat'){
     }
 }
 }
-
+/*
  
 } // stages closing
 
