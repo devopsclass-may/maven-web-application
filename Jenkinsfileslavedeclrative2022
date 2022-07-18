@@ -37,7 +37,7 @@ options {
         sh "mvn clean package"
     }
 }
-*/
+/*
 // execute sq report
 stage('sq report'){
 steps{
@@ -58,8 +58,9 @@ stage('deployapptomcat'){
         sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@3.110.77.157:/opt/apache-tomcat-9.0.64/webapps/"
     }
 }
+*/
 }
-/*
+
  
 } // stages closing
 
