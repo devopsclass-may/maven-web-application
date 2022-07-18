@@ -54,7 +54,7 @@ stage('upload artifact nexus'){
 stage('deployapptomcat'){
     steps{
          sshagent(['49e9a88d-1c0c-4f38-9e11-3357be71941c']) {
-        sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.233.173.43:/opt/apache-tomcat-9.0.64/webapps/"
+        sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@3.110.77.157:/opt/apache-tomcat-9.0.64/webapps/"
     }
 }
 }
